@@ -38,7 +38,7 @@ func getFeList() []string {
 	for _, feMap := range fe {
 		for k, v := range feMap {
 			if k == "S" ||
-				k == "AS" ||
+				// k == "AS" ||
 				k == "JSF" ||
 				k == "T" {
 				v = strings.ReplaceAll(v.(string), ";", ",")

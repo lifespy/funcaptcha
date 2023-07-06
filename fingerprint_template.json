@@ -1,29 +1,23 @@
-package funcaptcha
-
-import http "github.com/bogdanfinn/fhttp"
-
-var headers = http.Header{
-	"Accept":           []string{"*/*"},
-	"Accept-Encoding":  []string{"gzip, deflate, br"},
-	"Accept-Language":  []string{"en-US,en;q=0.5"},
-	"Cache-Control":    []string{"no-cache"},
-	"Connection":       []string{"keep-alive"},
-	"Content-Type":     []string{"application/x-www-form-urlencoded; charset=UTF-8"},
-	"Host":             []string{"client-api.arkoselabs.com"},
-	"Origin":           []string{"https://client-api.arkoselabs.com"},
-	"User-Agent":       []string{bv},
-	"X-Requested-With": []string{"XMLHttpRequest"},
-}
-
-const bx_template string = `
 [
-  { "key": "api_type", "value": "js" },
-  { "key": "p", "value": 1 },
-  { "key": "f", "value": "0f9f23887d9eccedec3ebc075286a587" },
-  { "key": "n", "value": "%s" },
+  {
+    "key": "api_type",
+    "value": "js"
+  },
+  {
+    "key": "p",
+    "value": 1
+  },
+  {
+    "key": "f",
+    "value": "%s"
+  },
+  {
+    "key": "n",
+    "value": "%s"
+  },
   {
     "key": "wh",
-    "value": "f7a6d54dc1e4357cfa1951136b3cba7d|72627afbfd19a741c7da1732218301ac"
+    "value": "%s"
   },
   {
     "key": "enhanced_fp",
@@ -112,88 +106,43 @@ const bx_template string = `
       },
       {
         "key": "client_config__sitedata_location_href",
-        "value": "https://chat.openai.com/"
+        "value": "https://chat.openai.com"
       },
       {
         "key": "client_config__surl",
         "value": "https://tcr9i.chat.openai.com"
       },
-      { "key": "mobile_sdk__is_sdk" },
-      { "key": "client_config__language", "value": null },
-      { "key": "navigator_battery_charging", "value": false },
-      { "key": "audio_fingerprint", "value": "124.04347527516074" }
+      {
+        "key": "mobile_sdk__is_sdk"
+      },
+      {
+        "key": "client_config__language",
+        "value": null
+      },
+      {
+        "key": "navigator_battery_charging",
+        "value": true
+      },
+      {
+        "key": "audio_fingerprint",
+        "value": "124.04347527516073"
+      }
     ]
   },
   {
     "key": "fe",
-    "value": [
-      "DNT:unknown",
-      "L:en-US",
-      "D:24",
-      "PR:2",
-      "S:1128,752",
-      "AS:1128,724",
-      "TO:-480",
-      "SS:true",
-      "LS:true",
-      "IDB:true",
-      "B:false",
-      "ODB:true",
-      "CPUC:unknown",
-      "PK:Linux x86_64",
-      "CFP:-1849310688",
-      "FR:false",
-      "FOS:false",
-      "FB:false",
-      "JSF:Andale Mono,Arial,Arial Black,Calibri,Cambria,Comic Sans MS,Courier,Courier New,Georgia,Helvetica,Impact,MS Gothic,MS PGothic,Times,Times New Roman,Trebuchet MS,Verdana",
-      "P:Chrome PDF Viewer,Chromium PDF Viewer,Microsoft Edge PDF Viewer,PDF Viewer,WebKit built-in PDF",
-      "T:0,false,false",
-      "H:8",
-      "SWF:false"
-    ]
+    "value": "%s"
   },
-  { "key": "ife_hash", "value": "f184377c7522d556751f69cfdd420f8b" },
-  { "key": "cs", "value": 1 },
+  {
+    "key": "ife_hash",
+    "value": "%s"
+  },
+  {
+    "key": "cs",
+    "value": 1
+  },
   {
     "key": "jsbd",
     "value": "{\"HL\":5,\"NCE\":true,\"DT\":\"\",\"NWD\":\"false\",\"DOTO\":1,\"DMTO\":1}"
   }
 ]
-
-`
-
-const (
-	p  = "Chrome PDF Viewer,Chromium PDF Viewer,Microsoft Edge PDF Viewer,PDF Viewer,WebKit built-in PDF"
-	bv = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
-)
-
-// LinkedHashMap
-var fe = []map[string]interface{}{
-	{"DNT": "1"},
-	{"L": "en-US"},
-	{"D": 24},
-	{"PR": 1}, // this.getPixelRatio();
-	{"S": "0;0"},
-	{"AS": false},
-	{"TO": 0},
-	{"SS": true},
-	{"LS": true},
-	{"IDB": true},
-	{"B": false},
-	{"ODB": true},
-	{"CPUC": "unknown"},
-	{"PK": "Linux x86_64"},
-	{"CFP": cfp},
-	{"FR": false},
-	{"FOS": false},
-	{"FB": false},
-	{"JSF": "Arial,Arial Narrow,Bitstream Vera Sans Mono,Bookman Old Style,Century Schoolbook,Courier,Courier New,Helvetica,MS Gothic,MS PGothic,Palatino,Palatino Linotype,Times,Times New Roman"},
-	{"P": p},
-	{"T": "0;false;false"},
-	{"H": 2},
-	{"SWF": false},
-}
-
-const (
-	cfp = "-1471542875"
-)
